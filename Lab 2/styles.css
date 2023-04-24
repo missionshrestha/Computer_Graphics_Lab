@@ -1,3 +1,4 @@
+
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
 body{
@@ -9,6 +10,7 @@ body{
     height: 90vh;
     background-color: rgb(199, 229, 229);
     padding: 2rem;
+    margin: 2rem;
 }
 
 body canvas{
@@ -30,3 +32,11 @@ body canvas{
     margin-top: 1em;
     
 }
+
+
+div a{
+    /* text-decoration: none; */
+    color: black;
+}
+
+
