@@ -1,0 +1,31 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+body {
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 90vh;
+  background-color: rgb(199, 229, 229);
+  padding: 2rem;
+}
+
+body canvas {
+  border: 5px solid black;
+  border-radius: 20px;
+  padding: 2em;
+  background-color: rgb(126, 243, 243);
+  margin: 1em;
+  z-index: 10;
+}
+
+.end-despriction {
+  font-size: 30px;
+  background-color: blue;
+  color: white;
+  border-radius: 15px;
+  padding: 5px 10px;
+  font-weight: bold;
+  margin-top: 1em;
+}

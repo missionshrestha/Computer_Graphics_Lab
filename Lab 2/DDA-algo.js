@@ -8,11 +8,13 @@ function DDALine(x1, y1, x2, y2){
 
     tempVertices.push(X / 600); // 600 * 600 - size of canvas
     tempVertices.push(Y / 600);
+    tempVertices.push(0);
+    
     // console.log(X, Y);
     
     let stepSize;
     if(Math.abs(dx) > Math.abs(dy)){
-        stepSize = Map.abs(dx);
+        stepSize = Math.abs(dx);
     }else{
         stepSize = Math.abs(dy);
     }
@@ -26,11 +28,11 @@ function DDALine(x1, y1, x2, y2){
         Y = Y + yinc;
         tempVertices.push(X / 600);
         tempVertices.push(Y / 600);
+        tempVertices.push(0);
+
         // console.log(X, Y);
         count++;
     }
     return tempVertices;
 }
 
-// DDALine(-100, -100, 100, 100);
-//  DDALine(100, 100, -100, -100);

@@ -10,36 +10,29 @@ if (gl === null) {
     );
 }
 
-let lineVertexData;
+let tempVertexData;
 
-//BLA Line
+//Circle
 {
-    console.log("BLA");
-
-
-
-    // lineVertexData = BLALine(40, 20, 400, 500);
-    lineVertexData = BLALine(400, 500, 40, 20);
-
+    console.log("Mid Point Circle");
+    tempVertexData = midPointCircle(200, 0, 0);
+    draw();
 
 }
 
-//DDA Line
+//Ellipse
 {
-    console.log("DDA");
-
-
-    lineVertexData = [...lineVertexData, ...DDALine(0, 0, -500, -500)];
-
-
-
+    console.log("Mid Point Ellipse");
+    tempVertexData = midPointEllipse(400, 300, 0, 0);;
+    draw();
 }
-draw();
+
+
 
 
 function draw() {
     const vertexData = [
-        ...lineVertexData
+        ...tempVertexData
     ];
 
     // console.log(vertexData);

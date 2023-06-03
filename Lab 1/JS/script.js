@@ -57,11 +57,20 @@ const vertexData = [
   
 ];
 
+
+// create a buffer to store vertex data
 const buffer = gl.createBuffer();
+
+// bind the buffer to the ARRAY_BUFFER target
 gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
+
+// fill the buffer with vertex data and set it as static (doesn't change often)
 gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(vertexData), gl.STATIC_DRAW);
 
+// create a new vertex shader
 const vertexShader = gl.createShader(gl.VERTEX_SHADER);
+
+// specify the position attribute for each vertex
 gl.shaderSource(
   vertexShader,
   `
@@ -72,28 +81,42 @@ gl.shaderSource(
 `
 );
 
-
+// compile the vertex shader
 gl.compileShader(vertexShader);
 
+// define a function to draw a triangle using a fragment shader
 function drawTriangle(fragmentShaderGLSL, start, end) {
+  // create a new fragment shader using the provided GLSL code
   const fragmentShader = gl.createShader(gl.FRAGMENT_SHADER);
   gl.shaderSource(fragmentShader, fragmentShaderGLSL);
+
+  // compile the fragment shader
   gl.compileShader(fragmentShader);
 
+  // create a new program and attach the vertex and fragment shaders
   const program = gl.createProgram();
   gl.attachShader(program, vertexShader);
   gl.attachShader(program, fragmentShader);
+
+  // link the program
   gl.linkProgram(program);
 
+  // get the location of the position attribute in the program
   const positionLocation = gl.getAttribLocation(program, `position`);
+
+  // enable the position attribute array
   gl.enableVertexAttribArray(positionLocation);
 
+  // associate the position attribute with the vertex buffer
   gl.vertexAttribPointer(positionLocation, 3, gl.FLOAT, false, 0, 0);
 
+  // use the program for rendering
   gl.useProgram(program);
 
+  // draw a triangle using the current program and vertex buffer, starting at the specified index and ending at the specified index
   gl.drawArrays(gl.TRIANGLES, start, end);
 }
+
 
 // upper blue border
 drawTriangle(
@@ -244,6 +267,8 @@ function createSpikeData(radius, xo, yo) {
     x = radius * Math.cos((Math.PI / 180) * (i + 30)) + xo;
     y = radius * Math.sin((Math.PI / 180) * (i + 30)) + yo;
     vertices.push(...[x, y, 0]);
+
+    //spike point
     if (i <= 90) {
       x = radius * Math.cos((Math.PI / 180) * (i + 15)) + xo + midWidth;
       y = radius * Math.sin((Math.PI / 180) * (i + 15)) + yo + midWidth;
